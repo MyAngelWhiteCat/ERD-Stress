@@ -15,7 +15,7 @@ int main() {
     std::string user_input;
     std::cin >> user_input;
     if (user_input != "OK") {
-        std::cout << "\nCanceled" << std::endl;
+        std::cout << "\nCanceled" << std::endl; return;
     }
     try {
         attack::EDRStress edr_stress;
