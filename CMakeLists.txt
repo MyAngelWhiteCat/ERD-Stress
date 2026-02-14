@@ -7,8 +7,8 @@ add_library(MalwareTechniques
     src/ntdll.cpp
     src/ntdll.h
 
-    src/edr_stress.cpp
-    src/edr_stress.h
+    src/bsod_thrower.cpp
+    src/bsod_thrower.h
 
     src/domain.h
     src/domain.cpp
