@@ -1,4 +1,4 @@
-#include "edr_stress.h"
+#include "bsod_thrower.h"
 
 #include <exception>
 #include <iostream>
@@ -19,8 +19,8 @@ int main() {
         return 1;
     }
     try {
-        attack::EDRStress edr_stress;
-        edr_stress.TriggerHardError();
+        maltech::BSODThrower bsod_thrower;
+        bsod_thrower.TriggerHardError();
     }
     catch (const std::exception& e) {
         std::cout << "EDR stress test error: " << e.what() << std::endl;

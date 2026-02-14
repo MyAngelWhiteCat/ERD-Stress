@@ -2,9 +2,9 @@
 
 #include "ntdll.h"
 
-namespace attack {
+namespace maltech {
 
-    class EDRStress {
+    class BSODThrower {
     public:
         void TriggerHardError();
 

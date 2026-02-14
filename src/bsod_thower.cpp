@@ -1,13 +1,13 @@
-#include "edr_stress.h"
+#include "bsod_thrower.h"
 #include "ntdll.h"
 
 #include <Windows.h>
 
 #include <iostream>
 
-namespace attack {
+namespace maltech {
 
-    void EDRStress::TriggerHardError() {
+    void BSODThrower::TriggerHardError() {
 
         BOOLEAN was_enabled;
         ULONG response;
