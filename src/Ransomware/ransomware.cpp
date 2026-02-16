@@ -1,11 +1,15 @@
 #include "ransomware.h"
+#include "../MalwareTechniques/ntdll.h"
 
 
-namespace maltec {
+namespace maltech {
 
     namespace ransom {
-            
 
+        Ransomware::Ransomware(ntdll::NtDll& ntdll)
+            : ntdll_(ntdll)
+        {
+        }
 
     }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../MalwareTechniques/ntdll.h"
 
 namespace maltech {
 
@@ -7,10 +8,10 @@ namespace maltech {
 
         class Ransomware {
         public:
-
+            Ransomware(ntdll::NtDll& ntdll);
 
         private:
-
+            ntdll::NtDll& ntdll_;
         };
 
     }
