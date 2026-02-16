@@ -1,5 +1,5 @@
 #include "bsod_thrower.h"
-#include "ntdll.h"
+#include "../MalwareTechniques/ntdll.h"
 
 #include <Windows.h>
 

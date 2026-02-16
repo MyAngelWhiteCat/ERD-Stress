@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ntdll.h"
+#include "../MalwareTechniques/ntdll.h"
 
 namespace maltech {
 
