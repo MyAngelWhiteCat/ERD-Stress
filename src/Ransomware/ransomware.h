@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace maltec {
+namespace maltech {
 
     namespace ransom {
 
