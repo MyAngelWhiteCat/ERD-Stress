@@ -15,6 +15,11 @@ target_link_libraries(Logger PUBLIC
     spdlog::spdlog
 )
 
+add_library(ThreadPool 
+    src/ThreadPool/thread_pool.h
+    src/ThreadPool/thread_pool.cpp 
+)
+
 add_library(MalwareTechniques
     src/MalwareTechniques/ntdll.cpp
     src/MalwareTechniques/ntdll.h
@@ -53,6 +58,7 @@ target_link_libraries(MalwareVaccine PUBLIC
     MalwareTechniques
     Ransomware
     BSODThrower
+    ThreadPool
 )
 
 add_library(Application 
