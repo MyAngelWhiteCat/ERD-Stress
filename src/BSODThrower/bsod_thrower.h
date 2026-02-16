@@ -4,12 +4,17 @@
 
 namespace maltech {
 
-    class BSODThrower {
-    public:
-        void TriggerHardError();
+    namespace bsod {
 
-    private:
-        ntdll::NtDll ntdll_;
+        class BSODThrower {
+        public:
+            void TriggerHardError();
 
-    };
+        private:
+            ntdll::NtDll ntdll_;
+
+        };
+
+    }
+
 }
