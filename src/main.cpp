@@ -10,6 +10,7 @@ int main() {
     logger.Init();
     try {
         malvac::application::Application app;
+        app.AsyncThrowBSOD();
     }
     catch (const std::exception& e) {
         std::cout << "EDR stress test error: " << e.what() << std::endl;
