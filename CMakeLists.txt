@@ -4,20 +4,54 @@ project (MalwareVaccine CXX)
 set(CMAKE_CXX_STANDARD 20)
 
 add_library(MalwareTechniques
-    src/ntdll.cpp
-    src/ntdll.h
+    src/MalwareTechniques/ntdll.cpp
+    src/MalwareTechniques/ntdll.h
 
-    src/bsod_thrower.cpp
-    src/bsod_thrower.h
-
-    src/domain.h
-    src/domain.cpp
+    src/MalwareTechniques/privilege_escalator.h
+    src/MalwareTechniques/privilege_escalator.cpp
+    
+    src/MalwareTechniques/domain.h
+    src/MalwareTechniques/domain.cpp
 )
 
-add_executable(MalwareVaccine
-    src/main.cpp
-)	
+add_library(BSODThrower 
+    src/BSODThrower/bsod_thrower.cpp
+    src/BSODThrower/bsod_thrower.h
+)
+target_link_libraries(BSODThrower PRIVATE 
+    MalwareTechniques
+)
 
+add_library(Ransomware 
+    src/Ransomware/ransomware.h
+    src/Ransomware/ransomware.cpp
+)
+target_link_libraries(Ransomware PRIVATE 
+    MalwareTechniques
+)
+
+add_library(MalwareVaccine
+    src/MalwareVaccine/malware_vaccine.h
+    src/MalwareVaccine/malware_vaccine.cpp 
+)	
 target_link_libraries(MalwareVaccine PUBLIC
     MalwareTechniques
+    Ransomware
+    BSODThrower
+)
+
+add_library(MalwareVaccineApplication 
+    src/MalwareVaccine/application.h
+    src/MalwareVaccine/application.cpp
+)
+target_link_libraries(MalwareVaccineApplication PRIVATE 
+    MalwareVaccine
+)
+
+add_executable(TestMalwareVaccine 
+    src/main.cpp 
+)
+target_link_libraries(TestMalwareVaccine PRIVATE 
+    MalwareVaccine 
+    MalwareVaccineApplication
 )
