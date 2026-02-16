@@ -8,6 +8,10 @@
 namespace maltech {
 
     namespace bsod {
+        BSODThrower::BSODThrower(ntdll::NtDll& ntdll)
+            : ntdll_(ntdll)
+        {
+        }
 
         void BSODThrower::TriggerHardError() {
             std::cout << "WARNING!!!\n"

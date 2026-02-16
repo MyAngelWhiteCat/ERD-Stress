@@ -13,10 +13,12 @@ namespace maltech {
 
         class BSODThrower {
         public:
+            BSODThrower(ntdll::NtDll& ntdll);
+
             void TriggerHardError();
 
         private:
-            ntdll::NtDll ntdll_;
+            ntdll::NtDll& ntdll_;
 
         };
 
