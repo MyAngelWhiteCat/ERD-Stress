@@ -40,11 +40,11 @@ target_link_libraries(MalwareVaccine PUBLIC
     BSODThrower
 )
 
-add_library(MalwareVaccineApplication 
+add_library(Application 
     src/MalwareVaccine/application.h
     src/MalwareVaccine/application.cpp
 )
-target_link_libraries(MalwareVaccineApplication PRIVATE 
+target_link_libraries(Application PRIVATE 
     MalwareVaccine
 )
 
@@ -53,5 +53,5 @@ add_executable(TestMalwareVaccine
 )
 target_link_libraries(TestMalwareVaccine PRIVATE 
     MalwareVaccine 
-    MalwareVaccineApplication
+    Application
 )
