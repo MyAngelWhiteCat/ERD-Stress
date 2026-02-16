@@ -1,4 +1,4 @@
-#include "bsod_thrower.h"
+#include "MalwareVaccine/application.h"
 
 #include <exception>
 #include <iostream>
