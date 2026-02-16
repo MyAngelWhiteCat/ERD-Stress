@@ -3,6 +3,18 @@ project (MalwareVaccine CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
+include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
+find_package(spdlog REQUIRED)
+
+add_library(Logger 
+    src/Logger/logger.h
+    src/Logger/logger.cpp
+)
+
+target_link_libraries(Logger PUBLIC 
+    spdlog::spdlog
+)
+
 add_library(MalwareTechniques
     src/MalwareTechniques/ntdll.cpp
     src/MalwareTechniques/ntdll.h
@@ -12,6 +24,9 @@ add_library(MalwareTechniques
     
     src/MalwareTechniques/domain.h
     src/MalwareTechniques/domain.cpp
+)
+target_link_libraries(MalwareTechniques PUBLIC 
+    Logger
 )
 
 add_library(BSODThrower 
