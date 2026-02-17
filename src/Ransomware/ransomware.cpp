@@ -15,12 +15,12 @@ namespace maltech {
 
     namespace ransom {
 
-        Ransomware::Ransomware(ntdll::NtDll& ntdll)
+        RansomwareSimulator::RansomwareSimulator(ntdll::NtDll& ntdll)
             : ntdll_(ntdll)
         {
         }
 
-        void Ransomware::StartEncrypting() {
+        void RansomwareSimulator::StartEncryptingSimulation() {
             DWORD drivers = GetLogicalDrives();
             const int bits_in_byte = 8;
             const int dword_bits_size = sizeof(DWORD) * bits_in_byte;
@@ -41,7 +41,7 @@ namespace maltech {
             }
         }
 
-        void Ransomware::PrintCatalogue(std::string_view path) {
+        void RansomwareSimulator::PrintCatalogue(std::string_view path) {
             WIN32_FIND_DATA data{ 0 };
             HANDLE hDirEntry = FindFirstFileA(path.data(), &data);
             if (!hDirEntry || hDirEntry == INVALID_HANDLE_VALUE) {

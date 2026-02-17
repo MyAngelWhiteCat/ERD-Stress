@@ -12,11 +12,11 @@ namespace maltech {
 
         using namespace std::literals;
 
-        class Ransomware {
+        class RansomwareSimulator {
         public:
-            Ransomware(ntdll::NtDll& ntdll);
+            RansomwareSimulator(ntdll::NtDll& ntdll);
 
-            void StartEncrypting();
+            void StartEncryptingSimulation();
 
         private:
             ntdll::NtDll& ntdll_;
