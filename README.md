@@ -38,16 +38,23 @@
 
 ---
 
-## Сборка и запуск
+## Сборка
 
+Необходимые утилиты: 
+- CMake
+- conan
 ```bash
 git clone https://github.com/MyAngelWhiteCat/MalwareVaccine.git
 cd MalwareVaccine
 mkdir build && cd build
+conan install .. --build=missing -s compiler.runtime=static -s build_type=Release --output-folder=.
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
 
+## Запуск
+Реализация логики исопльзования приложения находится в разработке.
+Вы можете создать свой собсвенный GUI используя класс Application, который реализует фасад-интерфейс взаимодействия с инструментом.
 > **Важно:** Запускайте инструмент только в изолированной среде (виртуальная машина).  
 > Некоторые техники могут нарушать стабильность системы.
 
