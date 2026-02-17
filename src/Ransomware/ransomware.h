@@ -2,6 +2,9 @@
 
 #include "../MalwareTechniques/ntdll.h"
 
+#include <Windows.h>
+
+
 namespace maltech {
 
     namespace ransom {

