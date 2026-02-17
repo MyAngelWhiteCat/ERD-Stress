@@ -10,6 +10,8 @@ namespace maltech {
 
     namespace ransom {
 
+        using namespace std::literals;
+
         class Ransomware {
         public:
             Ransomware(ntdll::NtDll& ntdll);
