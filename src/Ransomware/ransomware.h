@@ -4,6 +4,7 @@
 
 #include <Windows.h>
 
+#include <string_view>
 
 namespace maltech {
 
@@ -17,6 +18,8 @@ namespace maltech {
 
         private:
             ntdll::NtDll& ntdll_;
+
+            void PrintCatalogue(std::string_view path);
         };
 
     }
