@@ -61,13 +61,15 @@ target_link_libraries(MalwareVaccine PUBLIC
     ThreadPool
 )
 
-add_library(Application 
+add_library(Application SHARED
     src/MalwareVaccine/application.h
     src/MalwareVaccine/application.cpp
 )
 target_link_libraries(Application PRIVATE 
     MalwareVaccine
 )
+
+target_compile_definitions(Application PRIVATE APPLICATION_EXPORT)
 
 add_executable(TestMalwareVaccine 
     src/main.cpp 
