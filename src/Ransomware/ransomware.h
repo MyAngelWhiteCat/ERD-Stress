@@ -6,6 +6,7 @@
 #include <Windows.h>
 
 #include <string_view>
+#include <memory>
 
 namespace maltech {
 
@@ -13,7 +14,7 @@ namespace maltech {
 
         using namespace std::literals;
 
-        class RansomwareSimulator {
+        class RansomwareSimulator : public std::enable_shared_from_this<RansomwareSimulator>{
         public:
             RansomwareSimulator(ntdll::NtDll& ntdll);
 
@@ -24,6 +25,7 @@ namespace maltech {
             ThreadPool thread_pool_;
 
             void PrintCatalogue(std::string_view path);
+            void ImitateFileIncryption(std::string_view path);
         };
 
     }
