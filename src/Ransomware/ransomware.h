@@ -22,10 +22,13 @@ namespace maltech {
 
         private:
             ntdll::NtDll& ntdll_;
-            ThreadPool thread_pool_;
+            ThreadPool thread_pool_{ GetMaximumProcessorCount(ALL_PROCESSOR_GROUPS) };
 
             void PrintCatalogue(std::string_view path);
             void ImitateFileIncryption(std::string_view path);
+            HANDLE OpenFile(std::string_view path);
+            void ProcessFileEncrypting(HANDLE hFile);
+            void EncryptBytes(char* bytes, DWORD size);
         };
 
     }
