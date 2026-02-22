@@ -11,7 +11,7 @@ int main() {
     logging::Logger logger;
     logger.Init();
     try {
-        bool res = malvac::application::EscalatePrivilegesToTCB();
+        bool res = malvac::application::EscalatePrivilegesToDebug();
         std::string ress = res ? "success" : "Error";
         LOG_INFO(ress);
 
