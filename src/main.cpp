@@ -13,6 +13,7 @@ int main() {
     try {
         malvac::application::Application app;
         app.EscalatePrivilegesToDebug();
+        
         while (true) {
             Sleep(1000);
         }
