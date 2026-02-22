@@ -39,3 +39,11 @@
 
 # debug information files
 *.dwo
+
+#tmp and compile arts..
+/build/
+*/bin/
+*/obj/
+CMakeUserPresets.json
+*.user
+*.cache
