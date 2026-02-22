@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../MalwareTechniques/ntdll.h"
+#include "../ThreadPool/thread_pool.h"
 
 #include <Windows.h>
 
@@ -20,6 +21,7 @@ namespace maltech {
 
         private:
             ntdll::NtDll& ntdll_;
+            ThreadPool thread_pool_;
 
             void PrintCatalogue(std::string_view path);
         };
