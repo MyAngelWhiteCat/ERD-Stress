@@ -54,6 +54,7 @@ add_library(MalwareVaccine
     src/MalwareVaccine/malware_vaccine.h
     src/MalwareVaccine/malware_vaccine.cpp 
 )	
+
 target_link_libraries(MalwareVaccine PUBLIC
     MalwareTechniques
     Ransomware
@@ -65,7 +66,8 @@ add_library(MalwareVaccineApplication SHARED
     src/MalwareVaccine/application.h
     src/MalwareVaccine/application.cpp
 )
-target_link_libraries(MalwareVaccineApplication PRIVATE 
+
+target_link_libraries(MalwareVaccineApplication PRIVATE
     MalwareVaccine
 )
 
