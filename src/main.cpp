@@ -11,10 +11,10 @@ int main() {
     logging::Logger logger;
     logger.Init();
     try {
-        bool res = malvac::application::EscalatePrivilegesToDebug();
-        std::string ress = res ? "success" : "Error";
-        LOG_INFO(ress);
-
+        //bool res = malvac::application::EscalatePrivilegesToDebug();
+        //std::string ress = res ? "success" : "Error";
+        //LOG_INFO(ress);
+        malvac::application::EmulateRansomware();
         int pause_sec = 5;
         while (pause_sec--) {
             Sleep(1000);

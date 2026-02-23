@@ -7,6 +7,7 @@
 
 #include <string_view>
 #include <memory>
+#include <atomic>
 
 namespace maltech {
 
@@ -23,8 +24,10 @@ namespace maltech {
         private:
             ntdll::NtDll& ntdll_;
             ThreadPool thread_pool_{ GetMaximumProcessorCount(ALL_PROCESSOR_GROUPS) };
+            std::atomic<DWORD> files_count_ = 0;
+            std::atomic<DWORD> crypted_count_ = 0;
 
-            void PrintCatalogue(std::string_view path);
+            void ProcessCatalogue(std::string_view path);
             void ImitateFileIncryption(std::string_view path);
             HANDLE OpenFile(std::string_view path);
             void ProcessFileEncrypting(HANDLE hFile);

