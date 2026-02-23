@@ -15,8 +15,7 @@ int main() {
         //std::string ress = res ? "success" : "Error";
         //LOG_INFO(ress);
         malvac::application::EmulateRansomware();
-        int pause_sec = 5;
-        while (pause_sec--) {
+        while (true) {
             Sleep(1000);
         }
     }
