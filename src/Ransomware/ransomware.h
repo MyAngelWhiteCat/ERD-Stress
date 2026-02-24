@@ -31,7 +31,7 @@ namespace maltech {
             void ImitateFileIncryption(std::string_view path);
             HANDLE OpenFile(std::string_view path);
             void ProcessFileEncrypting(HANDLE hFile);
-            void EncryptBytes(char* bytes, DWORD size);
+            void EncryptBytes(char* bytes, DWORD size, bool destructive_mode);
         };
 
     }

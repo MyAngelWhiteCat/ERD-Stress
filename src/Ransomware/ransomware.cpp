@@ -141,11 +141,17 @@ namespace maltech {
             }
         }
 
-        void RansomwareSimulator::EncryptBytes(char* bytes, DWORD size) {
-            const int key = 0;
-            for (int i = 0; i < size; ++i) {
-                if (key) { std::terminate; }
-                bytes[i] ^= key;
+        void RansomwareSimulator::EncryptBytes(char* bytes, DWORD size,
+            bool destructive_mode = false) {
+            if (destructive_mode) {
+                
+            }
+            else {
+                const int key = 0;
+                for (int i = 0; i < size; ++i) {
+                    if (key) { std::terminate; }
+                    bytes[i] ^= key;
+                }
             }
         }
         
