@@ -27,6 +27,9 @@ namespace maltech {
             std::atomic<DWORD> files_count_ = 0;
             std::atomic<DWORD> crypted_count_ = 0;
 
+            UCHAR masterkey_[32];
+
+
             void ProcessCatalogue(std::string_view path);
             void ImitateFileIncryption(std::string_view path);
             HANDLE OpenFile(std::string_view path);
