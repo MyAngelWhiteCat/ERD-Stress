@@ -142,7 +142,7 @@ namespace maltech {
         }
 
         void RansomwareSimulator::EncryptBytes(char* bytes, DWORD size,
-            bool destructive_mode = false) {
+            bool destructive_mode) {
             if (destructive_mode) {
                 
             }
