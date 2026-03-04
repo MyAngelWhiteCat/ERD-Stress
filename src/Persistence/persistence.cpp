@@ -52,6 +52,7 @@ namespace maltech {
         }
 
         void PersistenceManager::SetupComObject() {
+            current_exe_path_.resize(MAX_PATH);
             HRESULT hr = CoCreateInstance(
                 CLSID_ShellLink,
                 NULL,

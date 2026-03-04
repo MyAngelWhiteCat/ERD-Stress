@@ -29,7 +29,7 @@ namespace maltech {
             PWSTR startup_folder_path_{NULL};
             IShellLinkW* shell_link_ptr_{ NULL };
             IPersistFile* exe_link_ptr_{ NULL };
-            std::wstring current_exe_path_{MAX_PATH, '\0'};
+            std::wstring current_exe_path_;
             std::wstring startup_file_path_;
 
             void SetupStartupFolderPath();
