@@ -15,6 +15,11 @@ target_link_libraries(Logger PUBLIC
     spdlog::spdlog
 )
 
+add_library(StringConverter 
+    src/StringConverter/string_converter.h
+    src/StringConverter/string_converter.cpp 
+)
+
 add_library(ThreadPool 
     src/ThreadPool/thread_pool.h
     src/ThreadPool/thread_pool.cpp 
@@ -56,6 +61,7 @@ add_library(Persistence
 )
 target_link_libraries(Persistence PRIVATE 
     Logger 
+    StringConverter
 )
 
 add_library(MalwareVaccine
