@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <ShlObj.h>
+#include <objbase.h>
 
 #include <iostream>
 #include <stdexcept>
@@ -15,7 +16,9 @@ namespace maltech {
             if (!startup_folder_path_) {
                 SetupStartupFolderPath();
             }
+            CoInitialize(NULL);
             std::wcout << startup_folder_path_ << std::endl;
+            CoUninitialize();
             return true;
         }
 
