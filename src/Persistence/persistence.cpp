@@ -22,6 +22,7 @@ namespace maltech {
                 throw std::runtime_error("Can't initialize COM");
             }
 
+            try {
             SetupComObject();
             std::wcout << startup_folder_path_ << std::endl;
             CoUninitialize();

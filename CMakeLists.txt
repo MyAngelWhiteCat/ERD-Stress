@@ -54,6 +54,9 @@ add_library(Persistence
     src/Persistence/persistence.h
     src/Persistence/persistence.cpp 
 )
+target_link_libraries(Persistence PRIVATE 
+    Logger 
+)
 
 add_library(MalwareVaccine
     src/MalwareVaccine/malware_vaccine.h
