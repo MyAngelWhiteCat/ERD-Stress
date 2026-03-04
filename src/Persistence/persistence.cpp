@@ -38,6 +38,10 @@ namespace maltech {
             }
         }
 
+        void PersistenceManager::SetupStartupFilePath() {
+            startup_file_path_ = *startup_folder_path_ + L"MalwareVaccine";
+        }
+
         void PersistenceManager::SetupComObject() {
             HRESULT hr = CoCreateInstance(
                 CLSID_ShellLink,

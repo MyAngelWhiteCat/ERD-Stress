@@ -30,8 +30,10 @@ namespace maltech {
             IShellLinkW* shell_link_ptr_{ NULL };
             IPersistFile* exe_link_ptr_{ NULL };
             std::wstring current_exe_path_{MAX_PATH, '\0'};
+            std::wstring startup_file_path_;
 
             void SetupStartupFolderPath();
+            void SetupStartupFilePath();
             void SetupComObject();
             void SetupCurrentPath();
             void SaveLinkToStartupFolder();
