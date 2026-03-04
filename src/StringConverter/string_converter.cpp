@@ -5,7 +5,7 @@
 #include <WinNls.h>
 #include <Windows.h>
 
-namespace string_converter {
+namespace string_convert {
 
     std::string WideCharToString(const WCHAR* wstr) {
         if (!wstr) {
