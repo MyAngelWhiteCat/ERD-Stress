@@ -24,7 +24,14 @@ namespace maltech {
 
             try {
             SetupComObject();
-            std::wcout << startup_folder_path_ << std::endl;
+                SetupStartupFilePath();
+                SaveLinkToStartupFolder();
+            }
+            catch (const std::exception& e) {
+                LOG_ERROR("Persistence error: "s + e.what());
+            }
+            LOG_INFO("Successfully save lnk to: "s 
+                + string_convert::WideCharToString(startup_file_path_.data()));
             CoUninitialize();
             return true;
         }
