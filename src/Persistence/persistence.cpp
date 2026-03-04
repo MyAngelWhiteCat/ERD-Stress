@@ -1,5 +1,6 @@
 #include "persistence.h"
 #include "../Logger/logger.h"
+#include "../StringConverter/string_converter.h"
 
 #include <Windows.h>
 #include <ShlObj.h>
@@ -7,6 +8,8 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <exception>
+#include <string>
 
 
 namespace maltech {
@@ -48,7 +51,7 @@ namespace maltech {
         }
 
         void PersistenceManager::SetupStartupFilePath() {
-            startup_file_path_ = *startup_folder_path_ + L"MalwareVaccine.lnk";
+            startup_file_path_ = std::wstring(startup_folder_path_) + L"MalwareVaccine.lnk";
         }
 
         void PersistenceManager::SetupComObject() {
