@@ -29,7 +29,7 @@ namespace maltech {
 
         void PersistenceManager::SetupStartupFolderPath() {
             HRESULT hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &startup_folder_path_);
-            if (hr != S_OK) {
+            if (!SUCCEEDED(hr)) {
                 throw std::runtime_error("Can't set setup startup folder");
             }
         }
@@ -42,7 +42,7 @@ namespace maltech {
                 IID_IShellLinkW,
                 (LPVOID*)&shell_link_ptr_
             );
-            if (hr != S_OK) {
+            if (!SUCCEEDED(hr)) {
                 throw std::runtime_error("Can't set setup COM object");
             }
         }
