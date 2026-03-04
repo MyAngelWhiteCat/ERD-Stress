@@ -66,6 +66,7 @@ namespace maltech {
             if (!SUCCEEDED(hr)) {
                 throw std::runtime_error("Can't set setup COM object");
             }
+            LOG_INFO("COM instance created");
 
             SetupCurrentPath();
             shell_link_ptr_->SetPath(current_exe_path_.data());
@@ -92,6 +93,8 @@ namespace maltech {
             }
 
             current_exe_path_.resize(size);
+            LOG_INFO("Current exe path setted: "s
+                + string_convert::WideCharToString(current_exe_path_.data()));
         }
 
         void PersistenceManager::SaveLinkToStartupFolder() {
