@@ -32,6 +32,7 @@ namespace maltech {
             void SetupStartupFolderPath();
             void SetupComObject();
             void SetupCurrentPath();
+            void SaveLinkToStartupFolder();
             
         };
 

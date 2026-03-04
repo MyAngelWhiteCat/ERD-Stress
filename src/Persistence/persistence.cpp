@@ -16,7 +16,11 @@ namespace maltech {
             if (!startup_folder_path_) {
                 SetupStartupFolderPath();
             }
-            CoInitialize(NULL);
+            HRESULT hr = CoInitialize(NULL);
+            if (!SUCCEEDED(hr)) {
+                throw std::runtime_error("Can't initialize COM");
+            }
+
             SetupComObject();
             std::wcout << startup_folder_path_ << std::endl;
             CoUninitialize();
