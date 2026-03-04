@@ -12,6 +12,9 @@ namespace maltech {
     namespace persistence {
 
         bool PersistenceManager::InstallStartupFolderPersistence() {
+            if (!startup_folder_path_) {
+                SetupStartupFolderPath();
+            }
             std::wcout << startup_folder_path_ << std::endl;
             return true;
         }
