@@ -9,6 +9,10 @@ namespace maltech {
 
         class PersistenceManager {
         public:
+            ~PersistenceManager() {
+                CoTaskMemFree(startup_folder_path_);
+            }
+
             bool InstallStartupFolderPersistence();
             bool RemoveStartupFolderPersistence();
 
