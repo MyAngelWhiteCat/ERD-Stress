@@ -4,6 +4,7 @@
 #include <ShlObj.h>
 
 #include <iostream>
+#include <stdexcept>
 
 
 namespace maltech {
@@ -20,6 +21,13 @@ namespace maltech {
 
         bool PersistenceManager::RemoveStartupFolderPersistence() {
             return false;
+        }
+
+        void PersistenceManager::SetupStartupFolderPath() {
+            HRESULT success = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &startup_folder_path_);
+            if (success != S_OK) {
+                throw std::runtime_error("Can't set setup startup folder");
+            }
         }
 
     }
