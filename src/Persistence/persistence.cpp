@@ -18,7 +18,7 @@ namespace maltech {
             }
             CoInitialize(NULL);
             IShellLinkW* pShellLink{ NULL };
-            CoCreateInstance(
+            HRESULT hr = CoCreateInstance(
                 CLSID_ShellLink,
                 NULL,
                 CLSCTX_INPROC_SERVER,
@@ -35,8 +35,8 @@ namespace maltech {
         }
 
         void PersistenceManager::SetupStartupFolderPath() {
-            HRESULT success = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &startup_folder_path_);
-            if (success != S_OK) {
+            HRESULT hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &startup_folder_path_);
+            if (hr != S_OK) {
                 throw std::runtime_error("Can't set setup startup folder");
             }
         }
