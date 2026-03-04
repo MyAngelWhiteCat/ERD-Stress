@@ -15,6 +15,9 @@ namespace maltech {
                 if (shell_link_ptr_) {
                     shell_link_ptr_->Release();
                 }
+                if (exe_link_ptr_) {
+                    exe_link_ptr_->Release();
+            }
             }
 
             bool InstallStartupFolderPersistence();
@@ -23,6 +26,7 @@ namespace maltech {
         private:
             PWSTR startup_folder_path_{NULL};
             IShellLinkW* shell_link_ptr_{ NULL };
+            IPersistFile* exe_link_ptr_{ NULL };
             std::wstring current_exe_path_{MAX_PATH, '\0'};
 
             void SetupStartupFolderPath();
