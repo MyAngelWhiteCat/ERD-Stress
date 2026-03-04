@@ -1,5 +1,7 @@
 #pragma once 
 
+#include <Windows.h>
+
 namespace maltech {
 
     namespace persistence {
