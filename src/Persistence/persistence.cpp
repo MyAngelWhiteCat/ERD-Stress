@@ -13,8 +13,9 @@ namespace maltech {
         bool PersistenceManager::InstallStartupFolderPersistence() {
             PWSTR path;
             SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &path);
-            std::wcout << *path << std::endl;
+            std::wcout << path << std::endl;
             CoTaskMemFree(path);
+            return true;
         }
 
         bool PersistenceManager::RemoveStartupFolderPersistence() {
