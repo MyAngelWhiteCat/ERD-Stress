@@ -1,5 +1,10 @@
 #include "persistence.h"
 
+#include <Windows.h>
+#include <ShlObj.h>
+
+#include <iostream>
+
 
 namespace maltech {
 
@@ -8,7 +13,10 @@ namespace maltech {
 
 
         bool PersistenceManager::InstallStartupFolderPersistence() {
-            return false;
+            PWSTR path;
+            SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &path);
+            std::wcout << *path << std::endl;
+            CoTaskMemFree(path);
         }
 
         bool PersistenceManager::RemoveStartupFolderPersistence() {
