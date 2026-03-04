@@ -17,8 +17,10 @@ namespace maltech {
 
         private:
             PWSTR startup_folder_path_{NULL};
+            IShellLinkW* shell_link_ptr_{ NULL };
 
             void SetupStartupFolderPath();
+            void SetupComObject();
 
         };
 

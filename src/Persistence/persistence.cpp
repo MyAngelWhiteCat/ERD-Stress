@@ -17,14 +17,7 @@ namespace maltech {
                 SetupStartupFolderPath();
             }
             CoInitialize(NULL);
-            IShellLinkW* pShellLink{ NULL };
-            HRESULT hr = CoCreateInstance(
-                CLSID_ShellLink,
-                NULL,
-                CLSCTX_INPROC_SERVER,
-                IID_IShellLinkW,
-                (LPVOID*)&pShellLink
-            );
+            SetupComObject();
             std::wcout << startup_folder_path_ << std::endl;
             CoUninitialize();
             return true;
@@ -38,6 +31,19 @@ namespace maltech {
             HRESULT hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &startup_folder_path_);
             if (hr != S_OK) {
                 throw std::runtime_error("Can't set setup startup folder");
+            }
+        }
+
+        void PersistenceManager::SetupComObject() {
+            HRESULT hr = CoCreateInstance(
+                CLSID_ShellLink,
+                NULL,
+                CLSCTX_INPROC_SERVER,
+                IID_IShellLinkW,
+                (LPVOID*)&shell_link_ptr_
+            );
+            if (hr != S_OK) {
+                throw std::runtime_error("Can't set setup COM object");
             }
         }
 
