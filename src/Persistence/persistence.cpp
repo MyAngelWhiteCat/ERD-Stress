@@ -17,6 +17,14 @@ namespace maltech {
                 SetupStartupFolderPath();
             }
             CoInitialize(NULL);
+            IShellLinkW* pShellLink{ NULL };
+            CoCreateInstance(
+                CLSID_ShellLink,
+                NULL,
+                CLSCTX_INPROC_SERVER,
+                IID_IShellLinkW,
+                (LPVOID*)&pShellLink
+            );
             std::wcout << startup_folder_path_ << std::endl;
             CoUninitialize();
             return true;
