@@ -39,8 +39,19 @@ namespace maltech {
             return true;
         }
 
-        bool PersistenceManager::RemoveStartupFolderPersistence() {
-            return false;
+        void PersistenceManager::RemoveStartupFolderPersistence() {
+            if (startup_file_path_.empty()) {
+                SetupStartupFilePath();
+            }
+
+            if (DeleteFileW(startup_file_path_.c_str())) {
+                LOG_INFO("Successfully remove startup folder persistence");
+            }
+            else {
+                std::string error = std::to_string(GetLastError());
+                throw std::runtime_error
+                ("Can't remove startup folder persistence. Error code: "s + error);
+            }
         }
 
         void PersistenceManager::SetupStartupFolderPath() {
