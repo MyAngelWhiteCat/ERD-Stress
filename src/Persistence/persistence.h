@@ -22,8 +22,8 @@ namespace maltech {
             }
             }
 
-            bool InstallStartupFolderPersistence();
-            bool RemoveStartupFolderPersistence();
+            void InstallStartupFolderPersistence();
+            void RemoveStartupFolderPersistence();
 
         private:
             PWSTR startup_folder_path_{NULL};

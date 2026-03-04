@@ -16,7 +16,7 @@ namespace maltech {
 
     namespace persistence {
 
-        bool PersistenceManager::InstallStartupFolderPersistence() {
+        void PersistenceManager::InstallStartupFolderPersistence() {
             if (!startup_folder_path_) {
                 SetupStartupFolderPath();
             }
@@ -31,12 +31,12 @@ namespace maltech {
                 SaveLinkToStartupFolder();
             }
             catch (const std::exception& e) {
-                LOG_ERROR("Persistence error: "s + e.what());
+                CoUninitialize();
+                throw e;
             }
             LOG_INFO("Successfully save lnk to: "s 
                 + string_convert::WideCharToString(startup_file_path_.data()));
             CoUninitialize();
-            return true;
         }
 
         void PersistenceManager::RemoveStartupFolderPersistence() {
