@@ -50,6 +50,11 @@ target_link_libraries(Ransomware PRIVATE
     MalwareTechniques
 )
 
+add_library(Persistence
+    src/Persistence/persistence.h
+    src/Persistence/persistence.cpp 
+)
+
 add_library(MalwareVaccine
     src/MalwareVaccine/malware_vaccine.h
     src/MalwareVaccine/malware_vaccine.cpp 
