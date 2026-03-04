@@ -1,6 +1,8 @@
 #pragma once 
 
 #include <Windows.h>
+#include <ShObjIdl_core.h>
+#include <string>
 
 namespace maltech {
 
@@ -21,10 +23,12 @@ namespace maltech {
         private:
             PWSTR startup_folder_path_{NULL};
             IShellLinkW* shell_link_ptr_{ NULL };
+            std::wstring current_exe_path_{MAX_PATH, '\0'};
 
             void SetupStartupFolderPath();
             void SetupComObject();
-
+            void SetupCurrentPath();
+            
         };
 
     }

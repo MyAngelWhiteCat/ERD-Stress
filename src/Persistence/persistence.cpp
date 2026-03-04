@@ -45,6 +45,32 @@ namespace maltech {
             if (!SUCCEEDED(hr)) {
                 throw std::runtime_error("Can't set setup COM object");
             }
+
+            SetupCurrentPath();
+            shell_link_ptr_->SetPath(current_exe_path_.data());
+        }
+
+        void PersistenceManager::SetupCurrentPath() {
+            DWORD size = GetModuleFileNameW(
+                NULL,
+                current_exe_path_.data(),
+                MAX_PATH
+            );
+
+            while (size == MAX_PATH) {
+                current_exe_path_.resize(current_exe_path_.size() * 2);
+                size = GetModuleFileNameW(
+                    NULL,
+                    current_exe_path_.data(),
+                    current_exe_path_.size()
+                );
+            }
+
+            if (size == 0) {
+                throw std::runtime_error("Can't get current exe path");
+            }
+
+            current_exe_path_.resize(size);
         }
 
     }
