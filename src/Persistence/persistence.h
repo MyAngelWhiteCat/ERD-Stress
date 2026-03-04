@@ -8,6 +8,8 @@ namespace maltech {
 
     namespace persistence {
 
+        using namespace std::literals;
+
         class PersistenceManager {
         public:
             ~PersistenceManager() {
