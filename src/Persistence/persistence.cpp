@@ -1,4 +1,5 @@
 #include "persistence.h"
+#include "../Logger/logger.h"
 
 #include <Windows.h>
 #include <ShlObj.h>
