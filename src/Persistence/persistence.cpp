@@ -81,6 +81,17 @@ namespace maltech {
             current_exe_path_.resize(size);
         }
 
+        void PersistenceManager::SaveLinkToStartupFolder() {
+            shell_link_ptr_->QueryInterface(
+                IID_IPersistFile,
+                (LPVOID*)&exe_link_ptr_
+            );
+            exe_link_ptr_->Save(
+                startup_file_path_.c_str(),
+                true
+            );
+        }
+
     }
 
 }
