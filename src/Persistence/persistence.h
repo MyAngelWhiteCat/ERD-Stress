@@ -10,6 +10,9 @@ namespace maltech {
         public:
             ~PersistenceManager() {
                 CoTaskMemFree(startup_folder_path_);
+                if (shell_link_ptr_) {
+                    shell_link_ptr_->Release();
+                }
             }
 
             bool InstallStartupFolderPersistence();
