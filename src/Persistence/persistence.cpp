@@ -51,7 +51,7 @@ namespace maltech {
         }
 
         void PersistenceManager::SetupStartupFilePath() {
-            startup_file_path_ = std::wstring(startup_folder_path_) + L"MalwareVaccine.lnk";
+            startup_file_path_ = std::wstring(startup_folder_path_) + L"\\MalwareVaccine.lnk";
         }
 
         void PersistenceManager::SetupComObject() {
