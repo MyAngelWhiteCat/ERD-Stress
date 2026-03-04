@@ -65,6 +65,7 @@ target_link_libraries(MalwareVaccine PUBLIC
     Ransomware
     BSODThrower
     ThreadPool
+    Persistence
 )
 
 add_library(MalwareVaccineApplication SHARED
