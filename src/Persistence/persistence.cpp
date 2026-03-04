@@ -10,8 +10,6 @@ namespace maltech {
 
     namespace persistence {
 
-
-
         bool PersistenceManager::InstallStartupFolderPersistence() {
             PWSTR path;
             SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &path);
