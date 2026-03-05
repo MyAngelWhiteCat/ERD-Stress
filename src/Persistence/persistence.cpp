@@ -26,7 +26,7 @@ namespace maltech {
             }
 
             try {
-            SetupComObject();
+                SetupComObject();
                 SetupStartupFilePath();
                 SaveLinkToStartupFolder();
             }

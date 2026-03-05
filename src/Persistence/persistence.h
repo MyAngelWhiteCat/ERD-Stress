@@ -19,7 +19,7 @@ namespace maltech {
                 }
                 if (exe_link_ptr_) {
                     exe_link_ptr_->Release();
-            }
+                }
             }
 
             void InstallStartupFolderPersistence();
